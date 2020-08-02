@@ -1,0 +1,138 @@
+html,
+body {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 12px;
+    line-height: 12px;
+}
+
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+table,
+td,
+th {
+    border: 1px solid #595959;
+}
+
+td,
+th {
+    padding: 3px;
+    width: 30px;
+    height: 35px;
+}
+
+th {
+    background-color: #7accee;
+}
+
+.modal {
+    display: none;
+}
+
+.open {
+    display: block;
+}
+
+.page-main {
+    width: auto;
+}
+
+.page-main__nav {
+    display: flex;
+}
+
+.state {
+    display: flex;
+    justify-content: flex-end;
+
+    margin-right: 100px;
+}
+
+.state__list {
+    display: flex;
+    
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+}
+
+.state__item {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.nav {}
+
+.nav__list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav__item {
+    display: flex;
+}
+
+.nav__button {
+    width: 70px;
+    font: inherit;
+    border: 1 solid black;
+
+    background-color: #fff;
+
+}
+
+.nav__button:hover {
+    background-color: goldenrod;
+}
+
+.modal__title {
+
+    line-height: 20px;
+}
+
+/*pilot template */
+
+.pilot__modal {
+    display: flex;
+    flex-direction: column;
+
+    width: 200px;
+    border: 1px solid black;
+}
+
+.pilot__table {
+    
+}
+
+
+.modal {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+
+    padding: 30px;
+    border: 1px solid black;
+}
+
+
+.create__modal {
+    position: fixed;
+    display: flex;
+
+    width: 300px;
+    height: 600px;
+
+    top: 50%;
+    left: 50%;
+    margin-top: -300px;
+    margin-left: -150px;
+
+    background-color: yellow;
+}

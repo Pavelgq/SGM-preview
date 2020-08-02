@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SGM</title>
+  <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+  <script src="http://chancejs.com/chance.min.js"></script>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="visually-hidden">SGM</h1>
+    <header class="header">
+      <section class="header__game game">
+        <div class="game__container">
+          <div class="wrapper">
+            <span class="game__title">Дата:</span>
+            <span class="game__date" id="date">10.12.2212</span>
+          </div>
+          <div class="wrapper">
+            <span class="game__title">Опыт:</span>
+            <span class="game__exp" id="exp">1</span>
+          </div>
+          <div class="wrapper">
+            <span class="game__title">Деньги:</span>
+            <span class="game__money" id="money">17272</span>
+          </div>
+        </div>
+        <div class="game__container reputation">
+          <div class="wrapper">
+            <span class="game__title">Марины:</span>
+            <span class="game__repunanion" id="repM">12</span>
+          </div>
+          <div class="wrapper">
+            <span class="game__title">Жуки:</span>
+            <span class="game__repunanion" id="repG">11</span>
+          </div>
+          <div class="wrapper">
+            <span class="game__title">Индюки:</span>
+            <span class="game__repunanion" id="repI">3</span>
+          </div>
+        </div>
+        <div class="game__run">
+          <marquee>Бегущая строка с новостями</marquee>
+        </div>
+        
+      </section>
+      
+    </header>
+    <main class="root">
+      <div class="playfield--wrapper">
+        <section class="map">
+          
+          <canvas id="canvas" class="map_canvas"></canvas>
+        </section>
+
+        <section class="quest visually-hidden">
+          <h2 class="quest__start-title">Задания</h2>
+          <ul class="quest__list">
+            <li class="quest__item visually-hidden">
+              <button class="quest__accordion">
+                <h3 class="quest__title">Поставка ${товар} на планету ${планета} сектор ${Сектор}</h3>
+              </button>
+              <div class="quest__panel">
+                <span class="quest__type">Тип: Поставка</span>
+                <p class="quest__description">В связи с ${событие из макрокарты} ${Раса} с планеты ${планета} нуждается
+                  в
+                  ${товар} и готовы приобрести за ${цена товара} за единицу. Если Вы доставите ${количество товара}, то
+                  закроете эту потребность и ${Раса} будут вам очень благодарны.</p>
+                <div class="quest__bonuses conditions">
+                  <h4 class="quest__subtitle">Награды</h4>
+                  <div class="wrapper"><span>Деньги:</span><span class="conditions__money">345</span></div>
+                  <div class="wrapper"><span>Опыт:</span><span class="conditions__exp">23</span></div>
+                  <div class="wrapper"><span>Репутация:</span><span class="conditions__rep">Марины -2, Жуки +1</span>
+                  </div>
+                </div>
+                <div class="quest__checking conditions">
+                  <h4 class="quest__subtitle">Требования</h4>
+                  <div class="wrapper"><span>Топливо:</span><span class="conditions__first">120</span></div>
+                  <div class="wrapper"><span>Опыт:</span><span class="conditions__second">20</span></div>
+                </div>
+                <div class="wrapper quest__menu">
+                  <button>Принять</button>
+                  <button>Назад</button>
+                </div>
+
+            </div></li>
+            <li class="quest__item">
+              <button class="quest__accordion">
+                <h3 class="quest__title">Арест или ликвидация ${имя преступника}</h3>
+              </button>
+              <div class="quest__panel">
+                <span class="quest__type">Тип: Охота за головами</span>
+                <p class="quest__description">${Раса} с планеты ${планета} ${Сектор} просят о поимке или ликвидации
+                  отъявленного пирата ${имя преступника} (рейтинг опасности ${сложность}). За голову ${имя преступника}
+                  назначена награда в ${деньги}. За поимку или ликвидацию преступника до/за ${Дата или срок} награда
+                  будет
+                  увеличена. Последний раз ${имя преступника} был замечен в секторе ${Сектор}.
+                </p>
+                <div class="quest__bonuses conditions">
+                  <h4 class="quest__subtitle">Награды</h4>
+                  <div class="wrapper"><span>Деньги:</span><span class="conditions__money">2823</span></div>
+                  <div class="wrapper"><span>Опыт:</span><span class="conditions__exp">322</span></div>
+                  <div class="wrapper"><span>Репутация:</span><span class="conditions__rep">Марины +2</span></div>
+                </div>
+                <div class="quest__checking conditions">
+                  <h4 class="quest__subtitle">Требования</h4>
+                  <div class="wrapper"><span>Свободное место:</span><span class="conditions__first">120</span></div>
+                  <div class="wrapper"><span>Опыт:</span><span class="conditions__second">20</span></div>
+                  <div class="wrapper"><span>Репутация Марины:</span><span class="conditions__fhirt">62</span></div>
+                </div>
+                <div class="wrapper quest__menu">
+                  <button>Принять</button>
+                  <button>Назад</button>
+                </div>
+
+            </div></li>
+            <li class="quest__item">
+              <h3 class="quest__title"></h3>
+              <span class="quest__type"></span>
+              <p class="quest__description"></p>
+            </li>
+          </ul>
+        </section>
+        <section class="hangar visually-hidden">
+          <div class="wrapper">
+            <h2 class="hangar__start-title">Ангар</h2>
+            <span class="hangar__stat">Кораблей: 1</span>
+            <span class="hangar__stat">На задании: 0</span>
+          </div>
+          <ul class="hangar__list">
+            <li class="hangar__item plane">
+              <button class="plane__accordion">
+                <h3 class="plane__title">Корабль: Jenny <span>Ранг 1</span></h3>
+              </button>
+              <div class="plane__panel--min">
+                <div class="wrapper">
+                  <span>Статус:</span><span>В ангаре</span>
+                  <span>Топливо:</span><span>1</span>
+                  <span>Корпус:</span><span>3</span>
+                </div>
+              </div>
+              <div class="plane__panel">
+                <div class="plane__chars conditions">
+                  <h4 class="plane__subtitle">Характеристики</h4>
+                  <div class="wrapper"><span class="plane__char">Корпус:</span><span class="c><sptions__health">4</span><button>Улучшить за 100</button></div>
+                  <div class="wrapper"><span class="plane__char">Трюм:</span><span class="conditions__space">2</span><button>Улучшить за 100</button></div>
+                  <div class="wrapper"><span class="plane__char">Топливо:</span><span class="conditions__fuel">3</span><button>Улучшить за 100</button></div>
+                  <div class="wrapper"><span class="plane__char">Огневая мощь:</span><span class="conditions__attac">3</span><button>Улучшить за 100</button></div>
+                  <div class="wrapper"><span class="plane__char">Щит:</span><span class="conditions__shield">3</span><button>Улучшить за 100</button></div>
+                </div>
+                <div class="plane__quests conditions">
+                  <h4 class="plane__subtitle">Задания</h4>
+                  <div class="wrapper">Заданий пока нет..</div>
+                </div>
+            </div></li>
+          </ul>
+        </section>
+        <section class="news visually-hidden">
+
+        </section>
+        <section class="shop visually-hidden">
+
+        </section>
+      </div>
+
+    </main>
+    <footer class="footer">
+      <section class="time-panel">
+        <button type="submit" class="time-panel__button" data-index="nextStep">
+          <img src="./img/icons/fast-time.svg" alt="Пропуск хода" srcset="" class="time-panel__icon" width="30" height="30">
+        </button>
+      </section>
+      <nav class="footer__nav nav">
+        <ul class="nav__list">
+          <li class="nav__item">
+            <button type="submit" class="nav__button" data-index="map">
+              <img src="./img/icons/map.svg" alt="Карта" srcset="" class="nav__icon" width="30" height="30"></button>
+          </li>
+          <li class="nav__item">
+            <button type="submit" class="nav__button" data-index="quest">
+              <img src="./img/icons/black-hole.svg" alt="Квесты" srcset="" class="nav__icon" width="30" height="30"></button>
+          </li>
+          <li class="nav__item">
+            <button type="submit" class="nav__button" data-index="hangar">
+              <img src="./img/icons/hangar.svg" alt="Ангар" srcset="" class="nav__icon" width="30" height="30"></button>
+          </li>
+          <li class="nav__item">
+            <button type="submit" class="nav__button" data-index="news">
+              <img src="./img/icons/news.svg" alt="Новости" srcset="" class="nav__icon" width="30" height="30"></button>
+          </li>
+          <li class="nav__item">
+            <button type="submit" class="nav__button" data-index="shop">
+              <img src="./img/icons/shop.svg" alt="Магазин" srcset="" class="nav__icon" width="30" height="30">
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </footer>
+  </div>
+  <script src="./src/index.js" type="module"></script>
+</body>
+
+</html>

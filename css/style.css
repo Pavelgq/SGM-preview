@@ -49,6 +49,21 @@ body {
   width: 480px;
   margin: 0 auto;
 }
+::-webkit-scrollbar {
+  width: 7px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
 .header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -73,6 +88,13 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -ms-flex-pack: distribute;
       justify-content: space-around;
 }
@@ -142,7 +164,7 @@ body {
 }
 .quest {
   width: 320px;
-  height: 100%;
+  height: 450px;
   overflow: hidden;
 }
 .quest__start-title {
@@ -157,9 +179,10 @@ body {
   list-style: none;
   margin: 0;
   padding: 0;
-  overflow: auto;
+  overflow-y: scroll;
 }
 .quest__item {
+  display: block;
   background-color: transparent;
 }
 .quest__title {
@@ -167,7 +190,11 @@ body {
   padding: 0;
   font-size: 12px;
 }
+.quest__description {
+  margin: 1px;
+}
 .quest__subtitle {
+  margin-top: 3px;
   margin-bottom: 5px;
 }
 .quest__accordion {
@@ -179,6 +206,7 @@ body {
   text-align: left;
   border: none;
   outline: none;
+  border-bottom: 1px solid #eeeeee;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
@@ -203,11 +231,12 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 100%;
+  width: 320px;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
   background-color: rgba(238, 238, 238, 0.493);
+  margin-bottom: 4px;
 }
 .time-panel__button {
   padding: 5px;
@@ -220,4 +249,75 @@ body {
 }
 .time-panel__button:active {
   opacity: 0.7;
+}
+.hangar {
+  width: 320px;
+  height: 450px;
+  overflow: hidden;
+}
+.hangar__start-title {
+  margin: 0 10px;
+  padding: 0;
+  text-align: center;
+  font-size: 12px;
+}
+.hangar__stat {
+  margin: 0 10px;
+}
+.hangar__list {
+  height: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: scroll;
+}
+.hangar__item {
+  display: block;
+  background-color: transparent;
+}
+.hangar__title {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+}
+.hangar__description {
+  margin: 1px;
+}
+.hangar__subtitle {
+  margin-top: 3px;
+  margin-bottom: 5px;
+}
+.plane__title {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+}
+.plane__accordion {
+  background-color: #eeeeee77;
+  color: #444;
+  cursor: pointer;
+  padding: 10px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+.plane__accordion:hover {
+  background-color: #ccc;
+}
+.plane__panel {
+  padding: 0 18px;
+  background-color: transparent;
+}
+.plane__panel--min {
+  margin: 0 5px;
+}
+.plane__char {
+  width: 100px;
+}
+.plane__menu {
+  margin-top: 10px;
+  margin-bottom: 30px;
 }
