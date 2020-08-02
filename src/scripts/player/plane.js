@@ -1,4 +1,4 @@
-import Chanse from '../utils/chance.js';
+// import Chanse from '../utils/chance.js';
 import func from "../utils/functions.js";
 
 const {
