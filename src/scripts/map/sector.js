@@ -11,7 +11,7 @@ export default class Sector {
     this.id = id;
     this.position = 1;
     this.focus = false;
-    
+    this.inmates = {};
     this.state = {
       type: '',
       resources: [],
@@ -21,6 +21,15 @@ export default class Sector {
     };
   }
 
+  /**
+   * Возвращает науку населяющих планету npc или 1
+   */
+    getScience() {
+      if (Object.keys(this.inmates).length != 0) {
+        return this.inmates.state.science;  
+      }
+      return 1;
+    }
 
   // /**
   //  * Стэйт включает в себя 

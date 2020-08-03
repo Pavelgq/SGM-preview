@@ -14,6 +14,17 @@ export default class Hangar {
     this.planes.push(plane);
   }
 
+  getPlane(name) {
+    let result;
+    this.planes.some(plane => {
+      if (name == plane.name) {
+        result = plane;
+        return true;
+      }
+    });
+    return result;
+  }
+
   changeState() {
     this.planes.forEach(plane => {
       if (plane.status == 'на задании') {

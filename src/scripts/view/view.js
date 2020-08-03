@@ -218,9 +218,15 @@ export default class View {
   }
 
   renderPlane(plane, index, container) {
+    let dis = false;
+    if (plane.status != 'в ангаре') {
+      dis = true;
+    }
+
+    let science = this.model.map.sectors[this.model.map.position].getScience();
 
     const template = `<li class="hangar__item plane">
-    <button class="plane__accordion">
+    <button class="plane__accordion" id="${plane.name}">
       <h3 class="plane__title">Корабль: ${plane.name} <span>Ранг ${plane.rang}</span></h3>
     </button>
     <div class="plane__panel--min">
@@ -234,16 +240,21 @@ export default class View {
       <div class="plane__chars conditions">
         <h4 class="plane__subtitle">Характеристики</h4>
         <div class="wrapper"><span class="plane__char">Корпус:</span><span
-            class="c><sptions__health">${plane.state.health}(${plane.params.health})</span><button>Улучшить за 100</button></div>
+            class="c><sptions__health">${plane.state.health}(${plane.params.health})</span><button class="plane__button" data-update="health" ${dis?'disabled':''}>Улучшить за ${plane.levels.health*100/science}</button></div>
         <div class="wrapper"><span class="plane__char">Трюм:</span><span
-            class="conditions__space">${plane.state.space}(${plane.params.space})</span><button>Улучшить за 100</button></div>
+            class="conditions__space">${plane.state.space}(${plane.params.space})</span><button class="plane__button" data-update="space" ${dis?'disabled':''}>Улучшить за ${plane.levels.space*100/science}</button></div>
         <div class="wrapper"><span class="plane__char">Топливо:</span><span
-            class="conditions__fuel">${plane.state.fuel}(${plane.params.fuel})</span><button>Улучшить за 100</button></div>
+            class="conditions__fuel">${plane.state.fuel}(${plane.params.fuel})</span><button class="plane__button" data-update="fuel" ${dis?'disabled':''}>Улучшить за ${plane.levels.fuel*100/science}</button></div>
         <div class="wrapper"><span class="plane__char">Огневая мощь:</span><span
-            class="conditions__attack">${plane.params.attack}</span><button>Улучшить за 100</button></div>
+            class="conditions__attack">${plane.params.attack}</span><button class="plane__button" data-update="attack" ${dis?'disabled':''}>Улучшить за ${plane.levels.attack*100/science}</button></div>
         <div class="wrapper"><span class="plane__char">Щит:</span><span
-            class="conditions__shield">${plane.params.shield}</span><button>Улучшить за 100</button></div>
-      </div>
+            class="conditions__shield">${plane.params.shield}</span><button class="plane__button" data-update="shield" ${dis?'disabled':''}>Улучшить за ${plane.levels.shield*100/science}</button></div>
+            <div class="wrapper">
+            <button class = "plane__add--fuel plane__button" data-update="add-fuel" ${dis?'disabled':''}>Заправить ${plane.rang*4/science}</button>
+            <button class = "plane__add--health plane__button" data-update="add-health" ${dis?'disabled':''}>Ремонт ${plane.levels.health*10/science}</button>
+          </div>
+            </div>
+      
       <div class="plane__quests conditions">
         <h4 class="plane__subtitle">Задания</h4>
         <div class="wrapper quest-for-${plane.name}"></div>

@@ -54,7 +54,12 @@ export default class Bugs extends Creatures {
             coloniz.push(curent);
             break;
           }
-          mas.splice(num, 1);
+          if (mas.length > 1) {
+            mas.splice(num, 1);
+          }else {
+            break;
+          }
+          
         }
         if (quant <= 0) break;
       }
